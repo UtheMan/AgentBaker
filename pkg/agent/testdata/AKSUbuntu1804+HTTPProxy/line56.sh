@@ -61,9 +61,7 @@ configureKubeletServerCert() {
     
 EOF
 
-    openssl genrsa -out $KUBELET_SERVER_PRIVATE_KEY_PATH 2048
-    openssl pkcs8 -in $KUBELET_SERVER_PRIVATE_KEY_PATH -topk8 -out $KUBELET_SERVER_PRIVATE_KEY_PKCS8_PATH -v1 PBE-SHA1-3DES
-    openssl req -new -x509 -days 7300 -config $KUBELET_OPENSSL_CNF -key $KUBELET_SERVER_PRIVATE_KEY_PKCS8_PATH -out $KUBELET_SERVER_CERT_PATH -subj "/CN=${NODE_NAME}"
+    openssl req -new -x509 -days 7300 -config $KUBELET_OPENSSL_CNF -newkey rsa:2048 -keyout $KUBELET_SERVER_PRIVATE_KEY_PATH -nodes -out $KUBELET_SERVER_CERT_PATH -subj "/CN=${NODE_NAME}"
 }
 
 configureK8s() {
