@@ -1452,6 +1452,7 @@ type NodeBootstrappingConfiguration struct {
 	PrimaryScaleSetName            string
 	SIGConfig                      SIGConfig
 	IsARM64                        bool
+	CustomCATrustConfig            *CustomCATrustConfig
 }
 
 // NodeBootstrapping represents the custom data, CSE, and OS image info needed for node bootstrapping.
@@ -1468,6 +1469,10 @@ type HTTPProxyConfig struct {
 	HTTPSProxy *string   `json:"httpsProxy,omitempty"`
 	NoProxy    *[]string `json:"noProxy,omitempty"`
 	TrustedCA  *string   `json:"trustedCa,omitempty"`
+}
+
+type CustomCATrustConfig struct {
+	CustomCATrustCerts []string `json:"customCATrustCerts,omitempty"`
 }
 
 // AKSKubeletConfiguration contains the configuration for the Kubelet that AKS set
