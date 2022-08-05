@@ -5407,7 +5407,7 @@ write_files:
   owner: root
   content: |
     {{$cert}}
-  #EOF
+    #EOF
 {{end}}
 {{- end}}
 
